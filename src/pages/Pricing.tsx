@@ -3,13 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Crown, Coins, ExternalLink } from "lucide-react";
+import { Crown, Coins, ExternalLink, Infinity, Zap } from "lucide-react";
 
 const subscriptionPlans = [
-  { name: "VIP-年卡", price: 999, stock: "库存一般", popular: true },
-  { name: "半年卡", price: 569, stock: "库存一般" },
-  { name: "季卡", price: 319, stock: "库存一般" },
-  { name: "月卡", price: 119, stock: "库存一般" },
+  { name: "VIP-年卡", price: 999, stock: "库存一般", days: 365, popular: true },
+  { name: "半年卡", price: 569, stock: "库存一般", days: 180 },
+  { name: "季卡", price: 319, stock: "库存一般", days: 90 },
+  { name: "月卡", price: 119, stock: "库存一般", days: 30 },
 ];
 
 const coinPlans = [
@@ -45,10 +45,19 @@ const Pricing = () => {
 
           {/* Subscription Plans */}
           <div className="mb-16">
-            <h2 className="text-2xl font-display font-semibold mb-8 flex items-center gap-2">
-              <Crown className="w-6 h-6 text-primary" />
-              订阅方案
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
+              <h2 className="text-2xl font-display font-semibold flex items-center gap-2">
+                <Crown className="w-6 h-6 text-primary" />
+                VIP订阅卡
+              </h2>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30">
+                <Infinity className="w-4 h-4 text-primary" />
+                <span className="text-sm text-primary font-medium">有效期内不限次数加密</span>
+              </div>
+            </div>
+            <p className="text-muted-foreground mb-8">
+              适合高频使用者，购买后在有效期内可无限次使用所有加密工具，性价比最高
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {subscriptionPlans.map((plan) => (
                 <Card 
@@ -64,11 +73,16 @@ const Pricing = () => {
                   )}
                   <CardHeader className="text-center pb-2">
                     <CardTitle className="text-xl font-display">{plan.name}</CardTitle>
+                    <p className="text-xs text-muted-foreground">有效期 {plan.days} 天</p>
                   </CardHeader>
                   <CardContent className="text-center">
-                    <div className="mb-4">
+                    <div className="mb-3">
                       <span className="text-3xl font-bold text-gradient">￥{plan.price}</span>
                       <span className="text-muted-foreground">.00</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-1 text-xs text-primary mb-3">
+                      <Infinity className="w-3 h-3" />
+                      <span>不限次数</span>
                     </div>
                     <p className={`text-sm ${getStockColor(plan.stock)}`}>{plan.stock}</p>
                   </CardContent>
@@ -79,10 +93,19 @@ const Pricing = () => {
 
           {/* Coin Plans */}
           <div className="mb-16">
-            <h2 className="text-2xl font-display font-semibold mb-8 flex items-center gap-2">
-              <Coins className="w-6 h-6 text-primary" />
-              加密币套餐
-            </h2>
+            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-6">
+              <h2 className="text-2xl font-display font-semibold flex items-center gap-2">
+                <Coins className="w-6 h-6 text-primary" />
+                加密币套餐
+              </h2>
+              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border">
+                <Zap className="w-4 h-4 text-foreground" />
+                <span className="text-sm font-medium">按次计费 · 每次加密消耗 200 币</span>
+              </div>
+            </div>
+            <p className="text-muted-foreground mb-8">
+              适合低频或临时使用者，按需购买加密币，每次加密扣除200币，永久有效不过期
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
               {coinPlans.map((plan) => (
                 <Card 
@@ -91,9 +114,10 @@ const Pricing = () => {
                 >
                   <CardHeader className="text-center pb-2">
                     <CardTitle className="text-lg font-display">{plan.coins}加密币</CardTitle>
+                    <p className="text-xs text-muted-foreground">可加密 {Math.floor(plan.coins / 200)} 次</p>
                   </CardHeader>
                   <CardContent className="text-center">
-                    <div className="mb-4">
+                    <div className="mb-3">
                       <span className="text-2xl font-bold text-gradient">￥{plan.price}</span>
                     </div>
                     <p className={`text-sm ${getStockColor(plan.stock)}`}>{plan.stock}</p>
