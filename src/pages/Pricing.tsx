@@ -136,7 +136,7 @@ const Pricing = () => {
               asChild
             >
               <a 
-                href="https://shop.yangdi.tech/links/82BA8CFC" 
+                href="https://fk.hnyaqiang.com/links/28A99873" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
