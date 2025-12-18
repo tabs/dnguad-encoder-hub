@@ -53,8 +53,12 @@ const Header = () => {
           
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="ghost" size="sm">登录</Button>
-            <Button variant="hero" size="sm">免费注册</Button>
+            <Button variant="ghost" size="sm" asChild>
+              <a href="https://xiaoluo.chaego.top/" target="_blank" rel="noopener noreferrer">登录</a>
+            </Button>
+            <Button variant="hero" size="sm" asChild>
+              <a href="https://xiaoluo.chaego.top/" target="_blank" rel="noopener noreferrer">免费注册</a>
+            </Button>
           </div>
           
           {/* Mobile menu button */}
@@ -92,8 +96,12 @@ const Header = () => {
                 )
               ))}
               <div className="flex gap-3 pt-4 border-t border-border">
-                <Button variant="ghost" size="sm" className="flex-1">登录</Button>
-                <Button variant="hero" size="sm" className="flex-1">免费注册</Button>
+                <Button variant="ghost" size="sm" className="flex-1" asChild>
+                  <a href="https://xiaoluo.chaego.top/" target="_blank" rel="noopener noreferrer">登录</a>
+                </Button>
+                <Button variant="hero" size="sm" className="flex-1" asChild>
+                  <a href="https://xiaoluo.chaego.top/" target="_blank" rel="noopener noreferrer">免费注册</a>
+                </Button>
               </div>
             </nav>
           </div>
