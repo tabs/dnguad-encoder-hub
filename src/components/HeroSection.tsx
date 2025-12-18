@@ -43,13 +43,17 @@ const HeroSection = () => {
           
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <Button variant="hero" size="xl">
-              <Globe className="w-5 h-5" />
-              立即体验
+            <Button variant="hero" size="xl" asChild>
+              <a href="https://xiaoluo.chaego.top/" target="_blank" rel="noopener noreferrer">
+                <Globe className="w-5 h-5" />
+                立即体验
+              </a>
             </Button>
-            <Button variant="glow" size="xl">
-              <Shield className="w-5 h-5" />
-              了解更多
+            <Button variant="glow" size="xl" asChild>
+              <a href="#tools">
+                <Shield className="w-5 h-5" />
+                了解更多
+              </a>
             </Button>
           </div>
           

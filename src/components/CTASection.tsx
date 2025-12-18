@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const CTASection = () => {
   return (
@@ -26,12 +27,14 @@ const CTASection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button variant="hero" size="xl" className="group">
-              免费开始使用
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Button variant="hero" size="xl" className="group" asChild>
+              <a href="https://xiaoluo.chaego.top/" target="_blank" rel="noopener noreferrer">
+                免费开始使用
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
-            <Button variant="glow" size="xl">
-              查看价格方案
+            <Button variant="glow" size="xl" asChild>
+              <Link to="/pricing">查看价格方案</Link>
             </Button>
           </div>
           
